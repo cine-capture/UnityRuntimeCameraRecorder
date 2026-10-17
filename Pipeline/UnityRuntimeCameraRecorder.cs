@@ -279,6 +279,7 @@ namespace UnityRuntimeCameraRecorder
             _videoCaptureStarted = false;
             if (_audio != null)
             {
+                _audio.StopCapture();
                 Destroy(_audio);
                 _audio = null;
             }
