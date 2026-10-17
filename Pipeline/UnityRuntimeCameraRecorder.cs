@@ -161,6 +161,12 @@ namespace UnityRuntimeCameraRecorder
         // Advances audio initialization, pipe connection and background finalization.
         private void Update()
         {
+            if (_writer?.CaptureFailure is Exception captureFailure)
+            {
+                Fail(captureFailure);
+                return;
+            }
+
             if (_waitingForAudio && _audio.IsReady)
             {
                 StartFfmpeg();
